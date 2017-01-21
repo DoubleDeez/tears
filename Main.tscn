@@ -11,6 +11,6 @@ script/script = ExtResource( 1 )
 
 transform/pos = Vector2( 600, 200 )
 TearSpeed = Vector2( 0, 200 )
-WaveStrength = 5
+WaveStrength = 10
 
 
