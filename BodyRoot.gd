@@ -21,3 +21,6 @@ func SetOffBody(IsOffBody):
 	OffBody = IsOffBody
 	if (!OffBody):
 		Speed = BodySpeed
+		
+func Stop():
+	Speed = Vector2(0 ,0)

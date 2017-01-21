@@ -51,7 +51,7 @@ func OnExitBody(area):
 
 func OnEnterFoot(area):
 	if (area.get_parent().get_name() == "Tear"):
-		print("Tear entered Foot")
+		body.Stop()
 		
 func OnEnterFloor(area):
 	if (area.get_parent().get_name() == "Tear"):
