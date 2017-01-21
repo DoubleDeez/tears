@@ -11,11 +11,11 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 	# Load initial players
-	var waveEm = load(Constants.SCENE_WAVE)
+	var waveEm = load(Constants.SCENE_WAVEEMITTER)
 	for i in range(numPlayers):
 		var waveEmNode = waveEm.instance()
 		add_child(waveEmNode)
-		#waveEmNode.set_pos(screen_size.y/2)
+		waveEmNode.set_pos(Vector2(screen_size.x*(0.9), screen_size.y/2))
 
 func OnEnterBody(area):
 	#print(area.get_parent().get_name())
