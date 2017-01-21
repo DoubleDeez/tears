@@ -16,6 +16,8 @@ func SetBodyColor():
 	while (abs(R-B) < RGB_MIN_DISTANCE || abs(G-B) < RGB_MIN_DISTANCE):
 		B = GetRandomRGBValue()
 	set_modulate(Color(R/255, G/255, B/255))
+	for child in get_children():
+		child.set_modulate(Color(R/255, G/255, B/255))
 	
 func GetRandomRGBValue():
 	randomize()
