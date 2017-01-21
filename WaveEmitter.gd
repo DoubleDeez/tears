@@ -15,7 +15,7 @@ func _input(event):
 	pass
 
 func create_wave():
-	var path = Constants.SCENE_WAVEEMITTER
+	var path = Constants.SCENE_WAVE
 	var tscn = load(path)
 	var instance = tscn.instance()
 	add_child(instance)

@@ -1,5 +1,8 @@
 extends Node2D
 
+const Constants = preload("Constants.gd")
+const Utils = preload("Utils.gd")
+
 const numPlayers = 1
 
 var screen_size
@@ -15,7 +18,8 @@ func _ready():
 		add_child(DistanceLabel)
 		DistanceLabel.set_pos(Vector2(600, Distance))
 
-	var waveEm = load("res://WaveEmitter.tscn")
+	# Load initial players
+	var waveEm = load(Constants.SCENE_WAVE)
 	for i in range(numPlayers):
 		var waveEmNode = waveEm.instance()
 		add_child(waveEmNode)
