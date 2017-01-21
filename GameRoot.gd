@@ -5,12 +5,16 @@ const Utils = preload("Utils.gd")
 
 const numPlayers = 1
 
+export(NodePath) var BodyPath = "Body"
+
 var screen_size = Vector2(0,0)
 var player_emitters = []
+var body
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	get_tree().connect("screen_resized", self, "handle_screen_resize")
+	body = get_node(BodyPath)
 
 	# Load initial players
 	var waveEm = load(Constants.SCENE_WAVEEMITTER)
@@ -38,21 +42,17 @@ func handle_screen_resize():
 		left.set_pos(Vector2(screen_size.x*(0.1), screen_size.y/2))
 
 func OnEnterBody(area):
-	#print(area.get_parent().get_name())
 	if (area.get_parent().get_name() == "Tear"):
-		print("Tear entered body")
+		body.SetOffBody(false)
 
 func OnExitBody(area):
-	#print(area.get_parent().get_name())
 	if (area.get_parent().get_name() == "Tear"):
-		print("Tear exited body")
+		body.SetOffBody(true)
 
 func OnEnterFoot(area):
-	#print(area.get_parent().get_name())
 	if (area.get_parent().get_name() == "Tear"):
 		print("Tear entered Foot")
 		
 func OnEnterFloor(area):
-	#print(area.get_parent().get_name())
 	if (area.get_parent().get_name() == "Tear"):
 		print("Tear entered Floor")
