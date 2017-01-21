@@ -5,6 +5,7 @@
 
 [node name="Sprite" type="Sprite"]
 
+transform/scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )
 

@@ -3,13 +3,8 @@ extends Sprite
 const Constants = preload("Constants.gd")
 const Utils = preload("Utils.gd")
 
-
 func _ready():
-	set_process(true)
-	# set_process_input(true)
-
-func _process(delta):
-	pass
+	set_process_input(true)
 
 func _input(event):
 	pass
