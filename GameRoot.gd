@@ -15,7 +15,7 @@ func _ready():
 		add_child(DistanceLabel)
 		DistanceLabel.set_pos(Vector2(600, Distance))
 
+	var waveEm = load("res://WaveEmitter.tscn")
 	for i in range(numPlayers):
-		var waveEm = load("res://WaveEmitter.tscn")
 		var waveEmNode = waveEm.instance()
 		add_child(waveEmNode)
