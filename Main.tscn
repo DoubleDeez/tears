@@ -10,13 +10,12 @@ script/script = ExtResource( 1 )
 
 [node name="Body" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 285.666, -1019.51 )
+transform/pos = Vector2( -4193.23, 3224.65 )
 transform/scale = Vector2( 4, 4 )
 
-[node name="Sprite" parent="." instance=ExtResource( 3 )]
+[node name="Tear" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 600, 200 )
-TearSpeed = Vector2( 0, 200 )
-WaveStrength = 10
+WaveStrength = 100
 
 
