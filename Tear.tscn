@@ -9,6 +9,8 @@ transform/pos = Vector2( 13.3768, 0.668976 )
 transform/scale = Vector2( 0.277178, 0.239452 )
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )
+TearSpeed = Vector2( 0, 0 )
+WaveStrength = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -20,8 +22,8 @@ limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
 limit/bottom = 10000000
-drag_margin/h_enabled = true
-drag_margin/v_enabled = true
+drag_margin/h_enabled = false
+drag_margin/v_enabled = false
 smoothing/enable = false
 smoothing/speed = 5.0
 drag_margin/left = 0.2

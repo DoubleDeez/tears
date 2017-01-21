@@ -10,5 +10,7 @@ script/script = ExtResource( 1 )
 [node name="Sprite" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 600, 200 )
+TearSpeed = Vector2( 0, 200 )
+WaveStrength = 5
 
 
