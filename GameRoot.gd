@@ -6,8 +6,8 @@ extends Node2D
 
 func _ready():
 	# Generate distance marks
-	for i in range(50):
-		var Distance = i * 1000;
+	for i in range(100):
+		var Distance = i * 500;
 		var DistanceLabel = Label.new()
 		DistanceLabel.set_text(String(Distance))
 		add_child(DistanceLabel)
