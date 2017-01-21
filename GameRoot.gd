@@ -1,12 +1,12 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 const numPlayers = 1
 
+var screen_size
+
 func _ready():
+	screen_size = get_viewport_rect().size
+
 	# Generate distance marks
 	for i in range(100):
 		var Distance = i * 500;
@@ -19,3 +19,4 @@ func _ready():
 	for i in range(numPlayers):
 		var waveEmNode = waveEm.instance()
 		add_child(waveEmNode)
+		waveEmNode.set_pos(screen_size.y/2)
