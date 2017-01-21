@@ -55,4 +55,4 @@ func OnEnterFoot(area):
 		
 func OnEnterFloor(area):
 	if (area.get_parent().get_name() == "Tear"):
-		print("Tear entered Floor")
+		get_tree().quit()
