@@ -4,6 +4,8 @@ extends Node2D
 # var a = 2
 # var b = "textvar"
 
+const numPlayers = 1
+
 func _ready():
 	# Generate distance marks
 	for i in range(100):
@@ -12,3 +14,8 @@ func _ready():
 		DistanceLabel.set_text(String(Distance))
 		add_child(DistanceLabel)
 		DistanceLabel.set_pos(Vector2(600, Distance))
+
+	for i in range(numPlayers):
+		var waveEm = load("res://WaveEmitter.tscn")
+		var waveEmNode = waveEm.instance()
+		add_child(waveEmNode)
