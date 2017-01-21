@@ -15,7 +15,7 @@ func _ready():
 	for i in range(numPlayers):
 		var waveEmNode = waveEm.instance()
 		add_child(waveEmNode)
-		waveEmNode.set_pos(screen_size.y/2)
+		#waveEmNode.set_pos(screen_size.y/2)
 
 func OnEnterBody(area):
 	#print(area.get_parent().get_name())
@@ -26,3 +26,13 @@ func OnExitBody(area):
 	#print(area.get_parent().get_name())
 	if (area.get_parent().get_name() == "Tear"):
 		print("Tear exited body")
+
+func OnEnterFoot(area):
+	#print(area.get_parent().get_name())
+	if (area.get_parent().get_name() == "Tear"):
+		print("Tear entered Foot")
+		
+func OnEnterFloor(area):
+	#print(area.get_parent().get_name())
+	if (area.get_parent().get_name() == "Tear"):
+		print("Tear entered Floor")

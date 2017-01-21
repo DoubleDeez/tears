@@ -1,9 +1,12 @@
-[gd_scene load_steps=39 format=1]
+[gd_scene load_steps=43 format=1]
 
 [ext_resource path="res://BodyRoot.gd" type="Script" id=1]
 [ext_resource path="res://images/body.png" type="Texture" id=2]
 [ext_resource path="res://Body.gd" type="Script" id=3]
-[ext_resource path="res://BodyCollision.gd" type="Script" id=4]
+[ext_resource path="res://images/nipple.png" type="Texture" id=4]
+[ext_resource path="res://BodyCollision.gd" type="Script" id=5]
+[ext_resource path="res://Floor.gd" type="Script" id=6]
+[ext_resource path="res://Foot.gd" type="Script" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -175,6 +178,11 @@ points = Vector2Array( 1231.72, 102.612, 1627.58, -41.7891, 1622.92, 111.957, 10
 custom_solver_bias = 0.0
 points = Vector2Array( 1076.09, 180.425, 757.056, 242.676, 912.683, 172.644 )
 
+[sub_resource type="RectangleShape2D" id=35]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
 [node name="Body" type="Node2D"]
 
 script/script = ExtResource( 1 )
@@ -182,6 +190,7 @@ BodySpeed = Vector2( 0, -200 )
 
 [node name="body" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 1430.11, 2125.05 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
@@ -189,8 +198,21 @@ script/script = ExtResource( 3 )
 RGB_RANGE = Vector2( 50, 200 )
 RGB_MIN_DISTANCE = 20
 
+[node name="nipple" type="Sprite" parent="body"]
+
+transform/pos = Vector2( -173.022, -647.744 )
+transform/scale = Vector2( 0.298795, 0.30285 )
+texture = ExtResource( 4 )
+
+[node name="nipple 2" type="Sprite" parent="body"]
+
+transform/pos = Vector2( 179.945, -649.899 )
+transform/scale = Vector2( 0.299658, 0.31452 )
+texture = ExtResource( 4 )
+
 [node name="Area2D" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 0, -6.33789 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
@@ -299,7 +321,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 
@@ -307,5 +329,71 @@ build_mode = 0
 polygon = Vector2Array( 988.536, -322.288, 1200.59, -84.1407, 1231.72, 102.612, 1076.09, 180.425, 912.683, 172.644, 757.056, 242.676, 694.805, 390.522, 702.586, 491.68, 632.554, 1160.88, 484.708, 1441.01, 434.875, 2210.22, 351.014, 2508.4, 364.99, 2713.39, 462.829, 2801.91, 635.212, 2829.87, 672.484, 2820.55, 677.142, 2773.96, 728.391, 2801.91, 751.686, 2750.66, 686.46, 2629.53, 677.142, 2522.37, 709.755, 2596.92, 756.345, 2592.26, 747.027, 2443.17, 625.894, 2214.88, 877.479, 1567.28, 891.456, 1441.49, 868.161, 1306.38, 947.364, 1092.07, 1017.25, 1418.19, 826.23, 2256.81, 854.184, 2978.95, 919.41, 3412.24, 858.843, 3738.37, 926.949, 4015.79, 954.347, 4491.83, 889.276, 4995.27, 673.515, 5214.46, 413.231, 5433.65, 423.506, 5485.02, 625.568, 5474.74, 759.135, 5440.5, 1002.29, 5423.37, 1043.39, 5395.97, 1063.94, 5320.63, 1053.67, 5166.51, 1057.09, 5015.82, 1259.15, 4474.71, 1351.62, 4163.05, 1303.67, 3830.85, 1248.88, 3556.87, 1433.82, 2546.55, 1615.33, 3577.41, 1577.66, 3707.56, 1512.59, 4145.93, 1576.33, 4393.56, 1767.34, 4929.35, 1809.28, 5087.75, 1799.96, 5348.66, 1813.93, 5390.59, 1851.21, 5413.88, 2144.72, 5446.5, 2247.22, 5479.11, 2438.24, 5483.77, 2452.22, 5423.2, 2107.45, 5148.32, 1977, 4985.26, 1907.11, 4482.09, 1949.05, 3876.42, 2000.29, 3773.92, 1963.02, 3540.97, 1949.05, 3382.56, 2018.93, 2935.3, 2042.23, 2241.11, 1837.23, 1421.13, 1907.11, 1090.34, 1995.64, 1304.66, 1972.34, 1491.02, 2000.29, 1621.47, 2233.24, 2222.48, 2121.43, 2422.81, 2102.79, 2571.9, 2126.09, 2590.54, 2163.36, 2576.56, 2191.31, 2515.99, 2172.68, 2627.81, 2112.11, 2753.6, 2126.09, 2790.87, 2181.99, 2772.24, 2191.31, 2828.15, 2237.9, 2828.15, 2270.52, 2804.85, 2396.31, 2800.19, 2489.49, 2725.65, 2517.44, 2543.95, 2503.46, 2441.45, 2419.6, 2171.23, 2382.33, 1439.77, 2223.93, 1160.23, 2195.97, 647.741, 2158.7, 466.04, 2149.38, 321.612, 2065.52, 223.773, 1916.43, 181.842, 1762.69, 167.865, 1622.92, 111.957, 1627.58, -41.7891, 1753.37, -125.098, 1827.91, -311.458, 1865.18, -567.702, 1860.52, -819.287, 1809.28, -1005.65, 1678.82, -1168.71, 1567.01, -1224.62, 1352.7, -1233.94, 1166.34, -1168.71, 961.341, -959.057, 910.092, -754.061 )
 shape_range = Vector2( 0, 33 )
 trigger = true
+
+[node name="Floor" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1440.89, 5556.39 )
+input/pickable = true
+shapes/0/shape = SubResource( 35 )
+shapes/0/transform = Matrix32( 573.547, 0, 0, 3.12775, 1191.82, 65.7154 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+
+transform/pos = Vector2( 1191.82, 65.7154 )
+transform/scale = Vector2( 573.547, 3.12775 )
+shape = SubResource( 35 )
+trigger = false
+_update_shape_index = 0
+
+[node name="LeftFoot" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1440.89, 5556.39 )
+input/pickable = true
+shapes/0/shape = SubResource( 35 )
+shapes/0/transform = Matrix32( 31.7241, 0, 0, 3.12775, -716.179, -128.819 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFoot"]
+
+transform/pos = Vector2( -716.179, -128.819 )
+transform/scale = Vector2( 31.7241, 3.12775 )
+shape = SubResource( 35 )
+trigger = false
+_update_shape_index = 0
+
+[node name="RightFoot" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1440.89, 5556.39 )
+input/pickable = true
+shapes/0/shape = SubResource( 35 )
+shapes/0/transform = Matrix32( 31.7241, 0, 0, 3.12775, 692.246, -136.6 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightFoot"]
+
+transform/pos = Vector2( 692.246, -136.6 )
+transform/scale = Vector2( 31.7241, 3.12775 )
+shape = SubResource( 35 )
+trigger = false
+_update_shape_index = 0
 
 
