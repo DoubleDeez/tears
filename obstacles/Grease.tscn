@@ -1,10 +1,91 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://images/grease.png" type="Texture" id=1]
+[ext_resource path="res://obstacles/grease.gd" type="Script" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 113.997, -50.427, 143.046, -39.6049, 171.525, -28.2133, 174.942, -6.56918, 153.298, 33.3015, 90.0745, 70.8939, 35.9643, 102.221 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 20.5856, -138.712, 106.592, -64.6665, 113.997, -50.427, 35.9643, 102.221, -73.9649, -11.6954, -65.9908, -36.1874, 10.9027, -138.142 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -91.0524, -65.8056, -121.24, -74.9189, -125.797, -84.6018, -126.366, -106.816, -112.127, -138.712, -86.4957, -167.761 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -73.9649, -56.6923, -91.0524, -65.8056, -86.4957, -167.761, -58.0166, -185.418, -20.4243, -182.57, 1.21982, -167.761, 5.20688, -148.395 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -73.9649, -56.6923, 5.20688, -148.395, 10.9027, -138.142, -65.9908, -36.1874 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 53.0517, -168.9, 79.2525, -197.949, 109.44, -217.314, 144.185, -216.745, 162.981, -196.809, 167.538, -159.787, 150.45, -126.181, 118.554, -88.0193, 33.686, -146.117 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 33.686, -146.117, 118.554, -88.0193, 106.592, -64.6665, 20.5856, -138.712 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -171.363, 168.862, -170.224, 128.991, -153.706, 90.2596, -73.9649, -11.6954, 35.9643, 102.221, -1.0585, 148.357, -38.0813, 187.089, -77.952, 207.024, -123.518, 208.733, -157.693, 192.784 )
 
 [node name="Grease" type="Sprite"]
 
 transform/scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
+script/script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 4 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = false
+shapes/4/shape = SubResource( 5 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/4/trigger = false
+shapes/5/shape = SubResource( 6 )
+shapes/5/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/5/trigger = false
+shapes/6/shape = SubResource( 7 )
+shapes/6/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/6/trigger = false
+shapes/7/shape = SubResource( 8 )
+shapes/7/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/7/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+
+build_mode = 0
+polygon = Vector2Array( -91.0524, -65.8056, -73.9649, -56.6923, -65.9908, -36.1874, -73.9649, -11.6954, -153.706, 90.2596, -170.224, 128.991, -171.363, 168.862, -157.693, 192.784, -123.518, 208.733, -77.952, 207.024, -38.0813, 187.089, -1.0585, 148.357, 35.9643, 102.221, 90.0745, 70.8939, 153.298, 33.3015, 174.942, -6.56918, 171.525, -28.2133, 143.046, -39.6049, 113.997, -50.427, 106.592, -64.6665, 118.554, -88.0193, 150.45, -126.181, 167.538, -159.787, 162.981, -196.809, 144.185, -216.745, 109.44, -217.314, 79.2525, -197.949, 53.0517, -168.9, 33.686, -146.117, 20.5856, -138.712, 10.9027, -138.142, 5.20688, -148.395, 1.21982, -167.761, -20.4243, -182.57, -58.0166, -185.418, -86.4957, -167.761, -112.127, -138.712, -126.366, -106.816, -125.797, -84.6018, -121.24, -74.9189 )
+shape_range = Vector2( 0, 7 )
+trigger = false
 
 

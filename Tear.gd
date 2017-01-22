@@ -6,15 +6,21 @@ extends Sprite
 
 export(NodePath) var Collider = "Area2D/CollisionPolygon2D"
 export(int) var WaveStrength = 5
+export(Vector2) var TearScale = Vector2(0.5, 0.5)
+export(float) var ScaleMultiplier = 1.25
+export(Vector2) var MinScale = Vector2(0.25, 0.25)
+
 
 var AreaCollider
 
 func _ready():
 	AreaCollider = get_node(Collider)
-	# set_process_input(true)
+	set_scale(TearScale)
+	
+func OnHitObstacle():
+	set_scale(get_scale() / ScaleMultiplier)
+	if (get_scale() < MinScale):
+		get_tree().quit()
 
-# func _input(event):
-	# if(event.is_action_pressed("wave_tear_right")):
-		# set_pos(get_pos() + Vector2(WaveStrength, 0))
-	# elif(event.is_action_pressed("wave_tear_left")):
-		# set_pos(get_pos() - Vector2(WaveStrength, 0))
+func OnHitGrease():
+	get_parent().get_node("Body").OnHitGrease()
