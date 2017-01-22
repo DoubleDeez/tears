@@ -57,7 +57,7 @@ func get_force():
 	return color.a
 
 func OnEnterArea(area):
-	if (area.get_parent().get_name() == "Tear"):
+	if (area.get_parent().get_name().find("Tear") > -1):
 		area.get_parent().OnHitWave(self.get_force(), self.direction)
 		self.direction *= -1
 		self.rotate(3.14)

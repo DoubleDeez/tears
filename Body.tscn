@@ -397,8 +397,8 @@ texture = ExtResource( 8 )
 
 [node name="groinLeaf" type="Sprite" parent="."]
 
-transform/pos = Vector2( 1437.43, 2589.88 )
-transform/scale = Vector2( 0.5, 0.5 )
+transform/pos = Vector2( 1436.5, 2582.13 )
+transform/scale = Vector2( 0.726262, 0.726262 )
 texture = ExtResource( 9 )
 
 

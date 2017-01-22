@@ -4,11 +4,13 @@ const Constants = preload("Constants.gd")
 const Utils = preload("Utils.gd")
 
 export(NodePath) var BodyPath = "Body"
+export(int) var TearFrequency = 5
 
+var TearScene = preload("res://Tear.tscn")
 var screen_size = Vector2(0,0)
 var player_emitters = []
 var body
-
+var obstacleCounter = 0
 
 func _ready():
 	screen_size = Utils.get_viewport_size(self)
@@ -81,6 +83,8 @@ func load_emitter_players():
 		player_emitters.append(emitters)
 		
 func PlaceObstacle(obstacle):
+	obstacleCounter += 1
+	CheckSpawnTear()
 	body.add_child(obstacle)
 
 func OnEnterBody(area):
@@ -100,3 +104,11 @@ func OnEnterFoot(area):
 func OnEnterFloor(area):
 	if (area.get_parent().get_name() == "Tear"):
 		get_tree().quit()
+
+func CheckSpawnTear():
+	if (obstacleCounter % TearFrequency != 0):
+		return
+	var tear = TearScene.instance()
+	add_child(tear)
+	tear.set_name("BonusTear")
+	Utils.place_on_screen(tear, 0.5, -0.2)#rand_range(0.2, 0.8), -0.2)

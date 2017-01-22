@@ -8,17 +8,20 @@
 
 script/script = ExtResource( 1 )
 BodyPath = "Body"
+TearFrequency = 1
 
 [node name="Body" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -4193.23, 3224.65 )
 transform/scale = Vector2( 4, 4 )
-TearOffBodyAcceleration = 200
+BodySpeed = Vector2( 0, -1000 )
+TearOffBodyAcceleration = 400
 
 [node name="Tear" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1501.39, 1081.79 )
 transform/scale = Vector2( 0.25, 0.25 )
+IsMainTear = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
