@@ -12,11 +12,11 @@ extents = Vector2( 10, 10 )
 
 script/script = ExtResource( 1 )
 Speed = 300
-Cooldown = 2
+Cooldown = 2.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
-transform/scale = Vector2( 0.2, 0.2 )
+transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]

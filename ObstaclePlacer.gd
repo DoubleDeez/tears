@@ -6,7 +6,7 @@ var Grease = preload("res://obstacles/Grease.tscn")
 var Pimple = preload("res://obstacles/Pimple.tscn")
 
 export(int) var Speed = 100
-export(float) var Cooldown = 2
+export(float) var Cooldown = 2.0
 
 var ObstacleArray = []
 var area
@@ -14,6 +14,9 @@ var cooldownTimer = 0.0
 
 var playerID
 var joystickID
+var textures
+var texture_pressed
+var texture_raised
 
 func _ready():
 	area = get_node("Area2D")
@@ -21,18 +24,42 @@ func _ready():
 	ObstacleArray.append(Mole)
 	ObstacleArray.append(Grease)
 	ObstacleArray.append(Pimple)
+
+	texture_pressed = load(textures["closed"])
+	texture_raised = load(textures["open"])
+	self.get_node("Sprite").set_texture(texture_raised)
+
 	set_process_input(true)
 	set_process(true)
 	
 func _input(event):
-	if event.is_action_pressed("p%d_place_obstacle" % playerID) && cooldownTimer <= 0.0:
+	var place_obstacle_event = "p%d_place_obstacle" % playerID
+
+	if event.is_action_pressed(place_obstacle_event) && cooldownTimer <= 0.0:
 		if(area.overlaps_area(get_parent().body.get_node("Area2D"))):
 			var obstacle = ObstacleArray[randi()%ObstacleArray.size()].instance()
 			get_parent().PlaceObstacle(obstacle)
 			obstacle.set_global_pos(get_global_pos())
 			cooldownTimer = Cooldown
 
+	if event.is_action_pressed(place_obstacle_event):
+		self.get_node("Sprite").set_texture(texture_pressed)
+	elif event.is_action_released(place_obstacle_event):
+		self.get_node("Sprite").set_texture(texture_raised)
+
 func _process(delta):
 	if abs(Input.get_joy_axis(joystickID, 0)) > 0.1:
 		set_pos(get_pos() + Vector2(Speed*Input.get_joy_axis(joystickID, 0), 0))
 	cooldownTimer -= delta;
+
+	# Fade the button in/out depending on Cooldown
+	var sprite = self.get_node("Sprite")
+	var color = sprite.get_modulate()
+	var pct = (Cooldown - cooldownTimer)/Cooldown
+	if pct <= 1.0:
+		sprite.set_scale(Vector2(pct*0.4,pct*0.4))
+	if pct < 1.0:
+		color.a = 0.75
+	else:
+		color.a = 1.0
+	sprite.set_modulate(color)
