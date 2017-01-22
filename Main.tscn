@@ -21,6 +21,9 @@ TearOffBodyAcceleration = 200
 transform/pos = Vector2( 1501.39, 1081.79 )
 transform/scale = Vector2( 0.25, 0.25 )
 WaveStrength = 100
+TearScale = Vector2( 0.5, 0.5 )
+ScaleMultiplier = 1.25
+MinScale = Vector2( 0.25, 0.25 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
