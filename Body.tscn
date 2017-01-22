@@ -372,7 +372,6 @@ _update_shape_index = 0
 
 [node name="body" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 1430.11, 2125.05 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
@@ -388,7 +387,7 @@ texture = ExtResource( 7 )
 
 [node name="nipple 2" type="Sprite" parent="body"]
 
-transform/pos = Vector2( 179.945, -649.899 )
+transform/pos = Vector2( 197.445, -645.399 )
 transform/scale = Vector2( 0.299658, 0.31452 )
 texture = ExtResource( 7 )
 
