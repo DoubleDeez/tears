@@ -1,12 +1,22 @@
 extends Sprite
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var screen_size
 
-export var intensity = 0
+var intensity
+var travel_speed
+var direction # +1 for left, -1 for right
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	set_process(true)
+
+func _process(delta):
+	screen_size = OS.get_window_size()
+	var self_x = self.get_global_pos().x
+	# When wave exits, screen, cue deletion
+	if(self_x > screen_size.x || self_x < 0):
+		print("Wave crossed border, deleting")
+		self.hide()
+		self.queue_free()
+		set_process(false)
+
+	self.set_global_pos(self.get_global_pos() + Vector2(travel_speed * direction, 0))
