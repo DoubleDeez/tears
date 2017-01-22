@@ -29,17 +29,22 @@ func _input(event):
 func _process(delta):
 	var up_event
 	var down_event
+	var js_axis
 	if side == "L":
 		up_event = "p1_left_emitter_up"
 		down_event =  "p1_left_emitter_down"
+		js_axis = 1
 	elif side == "R":
 		up_event = "p1_right_emitter_up"
 		down_event =  "p1_right_emitter_down"
+		js_axis = 3
 
 	if(Input.is_action_pressed(up_event)):
 		self.set_pos(self.get_pos() - Vector2(0,movement_speed))
 	elif(Input.is_action_pressed(down_event)):
 		self.set_pos(self.get_pos() + Vector2(0,movement_speed))
+	if abs(Input.get_joy_axis(0, js_axis)) > 0.1:
+		set_pos(get_pos() + Vector2(0, movement_speed*Input.get_joy_axis(0, js_axis)))
 
 func create_wave():
 	var instance = wave_scene.instance()
