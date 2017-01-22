@@ -1,6 +1,6 @@
 extends Sprite
 
-var TimeToLive = .7
+var TimeToLive = 1.5
 
 var TimeLeft
 

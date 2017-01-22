@@ -6,4 +6,3 @@ func _ready():
 func OnEnterArea(area):
 	if (area.get_parent().get_name() == "Tear"):
 		area.get_parent().OnHitGrease()
-		get_node("Area2D").queue_free()

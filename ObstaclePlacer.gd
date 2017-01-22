@@ -21,7 +21,6 @@ var texture_raised
 
 func _ready():
 	area = get_node("Area2D")
-	set_scale(Vector2(MaxScale, MaxScale))
 	ObstacleArray.append(BlackHead)
 	ObstacleArray.append(Mole)
 	ObstacleArray.append(Grease)
@@ -30,6 +29,7 @@ func _ready():
 	texture_pressed = load(textures["closed"])
 	texture_raised = load(textures["open"])
 	self.get_node("Sprite").set_texture(texture_raised)
+	self.get_node("Sprite").set_scale(Vector2(MaxScale, MaxScale))
 
 	set_process_input(true)
 	set_process(true)

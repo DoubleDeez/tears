@@ -6,11 +6,11 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 11.5906
 
 [node name="Mole" type="Sprite"]
 
-transform/scale = Vector2( 0.2, 0.2 )
+transform/scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )
 
@@ -18,7 +18,7 @@ script/script = ExtResource( 2 )
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 7.53683, 0, 0, 7.59339, -0.32682, 0.736717 )
+shapes/0/transform = Matrix32( 17.4601, 0, 0, 17.006, 42.984, 50.2138 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -27,8 +27,8 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
-transform/pos = Vector2( -0.32682, 0.736717 )
-transform/scale = Vector2( 7.53683, 7.59339 )
+transform/pos = Vector2( 42.984, 50.2138 )
+transform/scale = Vector2( 17.4601, 17.006 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://images/tear.png" type="Texture" id=1]
 [ext_resource path="res://Tear.gd" type="Script" id=2]
@@ -7,6 +7,11 @@
 
 custom_solver_bias = 0.0
 points = Vector2Array( 132.299, -1.15455, 160.614, 88.2346, 164.904, 155.773, 129.725, 233.244, 61.0825, 276.945, -10.9919, 282.904, -77.9182, 268.006, -146.56, 213.379, -167.153, 124.983, -142.27, 19.7029, -0.695614, -284.22 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 398.811
 
 [node name="Tear" type="Sprite"]
 
@@ -22,6 +27,7 @@ IsMainTear = false
 
 [node name="Area2D" type="Area2D" parent="."]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -37,5 +43,25 @@ build_mode = 0
 polygon = Vector2Array( -0.695614, -284.22, -142.27, 19.7029, -167.153, 124.983, -146.56, 213.379, -77.9182, 268.006, -10.9919, 282.904, 61.0825, 276.945, 129.725, 233.244, 164.904, 155.773, 160.614, 88.2346, 132.299, -1.15455 )
 shape_range = Vector2( 0, 0 )
 trigger = true
+
+[node name="Merge" type="Node2D" parent="."]
+
+[node name="MergeArea" type="Area2D" parent="Merge"]
+
+transform/scale = Vector2( 1, 1 )
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Merge/MergeArea"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
 
 

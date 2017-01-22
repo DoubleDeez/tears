@@ -11,12 +11,13 @@ var screen_size = Vector2(0,0)
 var player_emitters = []
 var body
 var obstacleCounter = 0
+var bodyStartPos
 
 func _ready():
 	screen_size = Utils.get_viewport_size(self)
 	get_tree().connect("screen_resized", self, "handle_screen_resize")
 	body = get_node(BodyPath)
-
+	bodyStartPos = body.get_pos()
 	load_emitter_players()
 	load_obstacle_placers()
 	handle_screen_resize()
@@ -99,11 +100,13 @@ func OnExitBody(area):
 
 func OnEnterFoot(area):
 	if (area.get_parent().get_name() == "Tear"):
-		body.Stop()
+		#body.Stop()
+		pass
 
 func OnEnterFloor(area):
 	if (area.get_parent().get_name() == "Tear"):
-		get_tree().quit()
+		#get_tree().quit()
+		body.set_pos(bodyStartPos)
 
 func CheckSpawnTear():
 	if (obstacleCounter % TearFrequency != 0):
