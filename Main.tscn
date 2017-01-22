@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://GameRoot.gd" type="Script" id=1]
 [ext_resource path="res://Body.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tear.tscn" type="PackedScene" id=3]
+[ext_resource path="res://StatsContainer.tscn" type="PackedScene" id=4]
 
 [node name="GameRoot" type="Node2D"]
 
@@ -42,5 +43,19 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+
+[node name="GridContainer" type="TextureFrame" parent="Camera2D" instance=ExtResource( 4 )]
+
+rect/scale = Vector2( 8, 8 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -11964.0
+margin/top = -7804.0
+margin/right = -10919.0
+margin/bottom = -7364.0
+expand = true
+stretch_mode = 3
 
 
