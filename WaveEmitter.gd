@@ -9,6 +9,8 @@ const wave_movement_speed = 2000
 
 # Set this when creating new instance in GameRoot; MUST be one of "L" or "R"
 var side
+var playerID
+var joystickID
 
 var root
 
@@ -20,9 +22,9 @@ func _ready():
 func _input(event):
 	var wave_create_event
 	if side == "L":
-		wave_create_event = "p1_lt"
+		wave_create_event = "p%d_lt" % playerID
 	elif side == "R":
-		wave_create_event = "p1_rt"
+		wave_create_event = "p%d_rt" % playerID
 
 	if(event.is_action_pressed(wave_create_event)):
 		create_wave()
@@ -44,8 +46,8 @@ func _process(delta):
 		self.set_pos(self.get_pos() - Vector2(0,movement_speed*delta))
 	elif(Input.is_action_pressed(down_event)):
 		self.set_pos(self.get_pos() + Vector2(0,movement_speed*delta))
-	if abs(Input.get_joy_axis(0, js_axis)) > 0.1:
-		set_pos(get_pos() + Vector2(0, delta*movement_speed*Input.get_joy_axis(0, js_axis)))
+	if abs(Input.get_joy_axis(joystickID, js_axis)) > 0.1:
+		set_pos(get_pos() + Vector2(0, delta*movement_speed*Input.get_joy_axis(joystickID, js_axis)))
 
 func create_wave():
 	var instance = wave_scene.instance()

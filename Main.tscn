@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://GameRoot.gd" type="Script" id=1]
 [ext_resource path="res://Body.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tear.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ObstaclePlacer.tscn" type="PackedScene" id=4]
 
 [node name="GameRoot" type="Node2D"]
 
@@ -21,10 +20,6 @@ TearOffBodyAcceleration = 200
 
 transform/pos = Vector2( 1501.39, 1081.79 )
 transform/scale = Vector2( 0.25, 0.25 )
-WaveStrength = 100
-TearScale = Vector2( 0.5, 0.5 )
-ScaleMultiplier = 1.25
-MinScale = Vector2( 0.25, 0.25 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -45,10 +40,5 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
-
-[node name="ObstaclePlacer" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 1636.28, 3258.52 )
-Speed = 100
 
 
