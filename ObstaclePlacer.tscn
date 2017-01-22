@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://ObstaclePlacer.gd" type="Script" id=1]
-[ext_resource path="res://images/aRaised.png" type="Texture" id=2]
+[ext_resource path="res://images/buttonRaisedA.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -12,6 +12,7 @@ extents = Vector2( 10, 10 )
 
 script/script = ExtResource( 1 )
 Speed = 300
+Cooldown = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 

@@ -46,5 +46,6 @@ drag_margin/bottom = 0.2
 
 transform/pos = Vector2( 1636.28, 3258.52 )
 Speed = 100
+Cooldown = 2
 
 
