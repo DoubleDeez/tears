@@ -6,7 +6,7 @@
 [ext_resource path="res://Foot.gd" type="Script" id=4]
 [ext_resource path="res://images/body.png" type="Texture" id=5]
 [ext_resource path="res://Body.gd" type="Script" id=6]
-[ext_resource path="res://images/nipple.png" type="Texture" id=7]
+[ext_resource path="res://obstacles/Nipple.tscn" type="PackedScene" id=7]
 [ext_resource path="res://images/hair.png" type="Texture" id=8]
 [ext_resource path="res://images/groinLeaf.png" type="Texture" id=9]
 
@@ -379,17 +379,15 @@ script/script = ExtResource( 6 )
 RGB_RANGE = Vector2( 50, 200 )
 RGB_MIN_DISTANCE = 20
 
-[node name="nipple" type="Sprite" parent="body"]
+[node name="Nipple" parent="body" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( -173.022, -647.744 )
-transform/scale = Vector2( 0.298795, 0.30285 )
-texture = ExtResource( 7 )
+transform/pos = Vector2( 197.368, -645.543 )
+transform/scale = Vector2( 0.310308, 0.331295 )
 
-[node name="nipple 2" type="Sprite" parent="body"]
+[node name="Nipple 2" parent="body" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 197.445, -645.399 )
-transform/scale = Vector2( 0.299658, 0.31452 )
-texture = ExtResource( 7 )
+transform/pos = Vector2( -173.438, -646.898 )
+transform/scale = Vector2( 0.296098, 0.304464 )
 
 [node name="hair" type="Sprite" parent="."]
 

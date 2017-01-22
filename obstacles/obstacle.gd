@@ -6,5 +6,4 @@ func _ready():
 func OnEnterArea(area):
 	if (area.get_parent().get_name() == "Tear"):
 		area.get_parent().OnHitObstacle()
-		self.hide()
-		self.queue_free()
+		get_node("Area2D").queue_free()
