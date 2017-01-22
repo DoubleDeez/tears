@@ -12,6 +12,9 @@ var ObstacleArray = []
 var area
 var cooldownTimer = 0.0
 
+var playerID
+var joystickID
+
 func _ready():
 	area = get_node("Area2D")
 	ObstacleArray.append(BlackHead)
@@ -22,7 +25,7 @@ func _ready():
 	set_process(true)
 	
 func _input(event):
-	if event.is_action_pressed("p2_place_obstacle") && cooldownTimer <= 0.0:
+	if event.is_action_pressed("p%d_place_obstacle" % playerID) && cooldownTimer <= 0.0:
 		if(area.overlaps_area(get_parent().body.get_node("Area2D"))):
 			var obstacle = ObstacleArray[randi()%ObstacleArray.size()].instance()
 			get_parent().PlaceObstacle(obstacle)
@@ -30,6 +33,6 @@ func _input(event):
 			cooldownTimer = Cooldown
 
 func _process(delta):
-	if abs(Input.get_joy_axis(1, 0)) > 0.1:
-		set_pos(get_pos() + Vector2(Speed*Input.get_joy_axis(1, 0), 0))
+	if abs(Input.get_joy_axis(joystickID, 0)) > 0.1:
+		set_pos(get_pos() + Vector2(Speed*Input.get_joy_axis(joystickID, 0), 0))
 	cooldownTimer -= delta;

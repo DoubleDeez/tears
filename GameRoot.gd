@@ -16,6 +16,7 @@ func _ready():
 	body = get_node(BodyPath)
 
 	load_emitter_players()
+	load_obstacle_placers()
 	handle_screen_resize()
 
 func handle_screen_resize():
@@ -26,6 +27,22 @@ func handle_screen_resize():
 		var left = emitters[1]
 		Utils.place_on_screen(right, 0.95, 0.5)
 		Utils.place_on_screen(left, 0.05, 0.5)
+
+func load_obstacle_placers():
+	var obsPlacer = load(Constants.SCENE_OBSTACLEPLACER)
+	var joysticks = Input.get_connected_joysticks()
+	for i in range(joysticks.size()):
+		var joystickID = joysticks[i]
+		var playerID = i+1
+
+		if not (playerID in [2,3] or playerID >= 5):
+			continue
+
+		var obsPlacerInst = obsPlacer.instance()
+		add_child(obsPlacerInst)
+		obsPlacerInst.set("playerID", playerID)
+		obsPlacerInst.set("joystickID", joystickID)
+		Utils.place_on_screen(obsPlacerInst, 0.5, 0.9)
 
 func load_emitter_players():
 	# Load initial players
