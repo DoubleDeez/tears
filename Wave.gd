@@ -15,9 +15,13 @@ var direction # +1 for left, -1 for right
 func _ready():
 	screen_size = Utils.get_viewport_size(self)
 	camera_rect = Utils.get_camera_rect_dict(self)
+
 	var body = get_tree().get_root().get_node("GameRoot").get_node("Body")
 	BodySpeed = body.get("BodySpeed")
+
 	set_process(true)
+
+	get_node("Area2D").connect("area_enter", self, "OnEnterArea")
 
 func die():
 	self.hide()
@@ -47,3 +51,16 @@ func _process(delta):
 
 	# Move across the screen
 	self.set_global_pos(self.get_global_pos() + Vector2(travel_speed * direction * delta, 0))
+
+func get_force():
+	####
+	# Returns "force" that wave should impart normalized between 0 and 1
+	####
+	var color = self.get_modulate()
+	return color.a
+
+func OnEnterArea(area):
+	if (area.get_parent().get_name() == "Tear"):
+		area.get_parent().OnHitWave(self.get_force(), self.direction)
+		self.direction *= -1
+		self.rotate(3.14)
