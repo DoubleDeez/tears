@@ -189,7 +189,6 @@ GreaseSpeedMultiplier = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 0, -6.33789 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )

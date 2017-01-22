@@ -15,7 +15,6 @@ BodyPath = "Body"
 transform/pos = Vector2( -4193.23, 3224.65 )
 transform/scale = Vector2( 4, 4 )
 TearOffBodyAcceleration = 200
-GreaseSpeedMultiplier = 2
 
 [node name="Tear" parent="." instance=ExtResource( 3 )]
 
