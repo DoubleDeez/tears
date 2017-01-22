@@ -33,7 +33,6 @@ func _process(delta):
 	color.a -= fade_speed*delta
 	# If completely faded, die
 	if color.a <= 0.0:
-		print("I have now disappeared; dying...")
 		self.die()
 		return
 	self.set_modulate(color)
@@ -41,7 +40,6 @@ func _process(delta):
 	var self_x = self.get_global_pos().x
 	# When wave exits, screen, cue deletion
 	if(self_x > camera_rect["left"] || self_x < camera_rect["right"]):
-		print("Wave crossed border, deleting")
 		self.die()
 		return
 

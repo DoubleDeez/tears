@@ -11,11 +11,19 @@ const wave_movement_speed = 2000
 var side
 var playerID
 var joystickID
+var textures
+var texture_open
+var texture_closed
 
 var root
 
 func _ready():
 	root = get_tree().get_root().get_node("GameRoot")
+
+	texture_open = load(textures["open"])
+	texture_closed = load(textures["closed"])
+	self.set_texture(texture_open)
+
 	set_process_input(true)
 	set_process(true)
 
@@ -27,7 +35,10 @@ func _input(event):
 		wave_create_event = "p%d_rt" % playerID
 
 	if(event.is_action_pressed(wave_create_event)):
+		self.set_texture(texture_closed)
 		create_wave()
+	elif(event.is_action_released(wave_create_event)):
+		self.set_texture(texture_open)
 
 func _process(delta):
 	var up_event

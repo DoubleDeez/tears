@@ -47,8 +47,6 @@ func load_obstacle_placers():
 func load_emitter_players():
 	# Load initial players
 	var waveEm = load(Constants.SCENE_WAVEEMITTER)
-	var RT_texture = load(Constants.TEXTURE_RIGHTEMITTER)
-	var LT_texture = load(Constants.TEXTURE_LEFTEMITTER)
 	var joysticks = Input.get_connected_joysticks()
 	for i in range(joysticks.size()):
 		var joystickID = joysticks[i]
@@ -58,18 +56,20 @@ func load_emitter_players():
 			continue
 
 		var waveEmNode_Right = waveEm.instance()
-		add_child(waveEmNode_Right)
-		waveEmNode_Right.set_texture(RT_texture)
+		var RT_textures = Constants.EMITTER_TEXTURES[playerID]["R"]
+		waveEmNode_Right.set("textures", RT_textures)
 		waveEmNode_Right.set("side", "R")
 		waveEmNode_Right.set("playerID", playerID)
 		waveEmNode_Right.set("joystickID", joystickID)
+		add_child(waveEmNode_Right)
 
 		var waveEmNode_Left = waveEm.instance()
-		add_child(waveEmNode_Left)
-		waveEmNode_Left.set_texture(LT_texture)
+		var LT_textures = Constants.EMITTER_TEXTURES[playerID]["L"]
+		waveEmNode_Left.set("textures", LT_textures)
 		waveEmNode_Left.set("side", "L")
 		waveEmNode_Left.set("playerID", playerID)
 		waveEmNode_Left.set("joystickID", joystickID)
+		add_child(waveEmNode_Left)
 
 		var emitters = []
 		emitters.append(waveEmNode_Right)
