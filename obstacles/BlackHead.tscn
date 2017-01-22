@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://images/blackhead.png" type="Texture" id=1]
+
+[node name="BlackHead" type="Sprite"]
+
+transform/scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+
+
