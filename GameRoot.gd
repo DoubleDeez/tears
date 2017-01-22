@@ -51,7 +51,9 @@ func load_emitter_players():
 		emitters.append(waveEmNode_Right)
 		emitters.append(waveEmNode_Left)
 		player_emitters.append(emitters)
-
+		
+func PlaceObstacle(obstacle):
+	body.add_child(obstacle)
 
 func OnEnterBody(area):
 	if (area.get_parent().get_name() == "Tear"):
