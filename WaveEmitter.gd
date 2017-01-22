@@ -5,6 +5,7 @@ const Utils = preload("Utils.gd")
 
 var wave_scene = load(Constants.SCENE_WAVE)
 const movement_speed = 30
+const wave_movement_speed = 50
 
 # Set this when creating new instance in GameRoot; MUST be one of "L" or "R"
 var side
@@ -48,7 +49,7 @@ func _process(delta):
 
 func create_wave():
 	var instance = wave_scene.instance()
-	instance.set("travel_speed", 10.0)
+	instance.set("travel_speed", wave_movement_speed)
 	instance.set("direction", 1 if side == "L" else -1)
 	instance.set_global_pos(self.get_global_pos())
 	root.add_child(instance)

@@ -13,21 +13,21 @@ var body
 
 
 func _ready():
-	screen_size = get_viewport_rect().size
+	screen_size = Utils.get_viewport_size(self)
 	get_tree().connect("screen_resized", self, "handle_screen_resize")
 	body = get_node(BodyPath)
 
 	load_emitter_players()
-
+	handle_screen_resize()
 
 func handle_screen_resize():
-	screen_size = get_viewport_rect().size
+	screen_size = Utils.get_viewport_size(self)
+	print("Screen size is %d x %d" % [screen_size.x, screen_size.y])
 	for emitters in player_emitters:
 		var right = emitters[0]
 		var left = emitters[1]
-		right.set_pos(Vector2(screen_size.x*(0.9), screen_size.y/2))
-		left.set_pos(Vector2(screen_size.x*(0.1), screen_size.y/2))
-
+		Utils.place_on_screen(right, 0.95, 0.5)
+		Utils.place_on_screen(left, 0.05, 0.5)
 
 func load_emitter_players():
 	# Load initial players
@@ -37,13 +37,11 @@ func load_emitter_players():
 	for i in range(numPlayers):
 		var waveEmNode_Right = waveEm.instance()
 		add_child(waveEmNode_Right)
-		waveEmNode_Right.set_pos(Vector2(screen_size.x*(0.9), screen_size.y/2))
 		waveEmNode_Right.set_texture(RT_texture)
 		waveEmNode_Right.set("side", "R")
 
 		var waveEmNode_Left = waveEm.instance()
 		add_child(waveEmNode_Left)
-		waveEmNode_Left.set_pos(Vector2(screen_size.x*(0.1), screen_size.y/2))
 		waveEmNode_Left.set_texture(LT_texture)
 		waveEmNode_Left.set("side", "L")
 
