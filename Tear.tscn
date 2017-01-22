@@ -15,7 +15,9 @@ transform/scale = Vector2( 0.277178, 0.239452 )
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )
 Collider = "Area2D/CollisionPolygon2D"
-WaveStrength = 5
+TearScale = Vector2( 0.5, 0.5 )
+ScaleMultiplier = 1.25
+MinScale = Vector2( 0.25, 0.25 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
