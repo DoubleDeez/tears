@@ -24,3 +24,18 @@ const EMITTER_TEXTURES = {
 		},
 	}
 }
+
+const BULLY_TEXTURES = {
+	2: {
+			"open": "res://images/buttonRaisedA.png",
+			"closed": "res://images/buttonPressedA.png"
+	},
+	3: {
+			"open": "res://images/buttonRaisedB.png",
+			"closed": "res://images/buttonPressedB.png"
+	},
+	5: {
+			"open": "res://images/buttonRaisedC.png",
+			"closed": "res://images/buttonPressedC.png"
+	}
+}

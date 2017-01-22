@@ -39,9 +39,13 @@ func load_obstacle_placers():
 			continue
 
 		var obsPlacerInst = obsPlacer.instance()
-		add_child(obsPlacerInst)
 		obsPlacerInst.set("playerID", playerID)
 		obsPlacerInst.set("joystickID", joystickID)
+
+		var textureID = playerID if playerID < 5 else 5
+		obsPlacerInst.set("textures", Constants.BULLY_TEXTURES[textureID])
+
+		add_child(obsPlacerInst)
 		Utils.place_on_screen(obsPlacerInst, 0.5, 0.9)
 
 func load_emitter_players():
