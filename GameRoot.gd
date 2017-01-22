@@ -30,12 +30,12 @@ func _ready():
 
 func _process(delta):
 	var gridContainer = self.get_node("Camera2D").get_node("GridContainer")
-	gridContainer.get_node("ObstaclesPlaced").set_text("Obstacles Placed: %d" % obstacleCounter)
-	gridContainer.get_node("WavesTriggered").set_text("Waves Triggered: %d" % wavesTriggered)
+	gridContainer.get_node("ObstaclesPlaced").set_text("%d" % obstacleCounter)
+	gridContainer.get_node("WavesTriggered").set_text("%d" % wavesTriggered)
 	var tearVolume = get_node("Tear").get_scale().x * tearVolumeScale_mL
-	gridContainer.get_node("TearVolume").set_text("Tear Volume: %.2f mL" % tearVolume)
+	gridContainer.get_node("TearVolume").set_text("%.2f mL" % tearVolume)
 	var tearSpeed = get_node("Body").Speed.y * tearVolumeVel_cmps * -1
-	gridContainer.get_node("TearVelocity").set_text("Tear Velocity: %.2f cm/s" % tearSpeed)
+	gridContainer.get_node("TearVelocity").set_text("%.2f cm/s" % tearSpeed)
 
 func handle_screen_resize():
 	screen_size = Utils.get_viewport_size(self)
