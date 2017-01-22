@@ -52,4 +52,7 @@ func create_wave():
 	instance.set("travel_speed", wave_movement_speed)
 	instance.set("direction", 1 if side == "L" else -1)
 	instance.set_global_pos(self.get_global_pos())
+	# Rotate wave to face the "right" way
+	if side == "R":
+		instance.set_rot(3.14)
 	root.add_child(instance)
