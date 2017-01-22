@@ -10,24 +10,26 @@ const wave_strength = 2000.0
 
 var TearTrailScene = preload("res://TearTrail.tscn")
 var AreaCollider
-var BonusTearSpeed = Vector2(0, 25)
+var BonusTearSpeed = Vector2(0, 15)
 
 func _ready():
 	AreaCollider = get_node(Collider)
 	set_scale(TearScale)
 	set_process(true)
 	if IsMainTear:
-		get_node("Area2D").connect("area_enter", self, "OnHitTear")
+		get_node("Merge/MergeArea").connect("area_enter", self, "OnHitTear")
 	else:
 		BonusTearSpeed *= rand_range(0.5, 2.0)
-		BonusTearSpeed.x = rand_range(-20.0, 20.0)
+		BonusTearSpeed.x = rand_range(-10.0, 10.0)
 		set_fixed_process(true)
 		
 func _process(delta):
 	var TrailDrop = TearTrailScene.instance()
+	if !IsMainTear:
+		TrailDrop.set_modulate(Color(255, 127, 0))
 	get_parent().get_node("Body").add_child(TrailDrop)
 	TrailDrop.set_global_pos(get_global_pos())
-	TrailDrop.set_scale(get_scale() / 2.0)
+	TrailDrop.set_scale(get_scale() / 5.0)
 
 func _fixed_process(delta):
 	set_pos(get_pos() + BonusTearSpeed)
@@ -47,6 +49,6 @@ func OnHitWave(wave_force, direction):
 	self.set_pos(self.get_pos() + Vector2(wave_force * wave_strength * direction, 0))
 
 func OnHitTear(area):
-	if (area.get_parent().get_name().find("Tear") > -1):
+	if (area.get_parent().get_name().find("Merge") > -1):
 		set_scale(get_scale() + area.get_parent().get_scale())
-		area.get_parent().queue_free()
+		area.get_parent().get_parent().queue_free()

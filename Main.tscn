@@ -25,7 +25,7 @@ IsMainTear = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-transform/pos = Vector2( 1836.75, 1134.83 )
+transform/pos = Vector2( 1859.52, 0 )
 anchor_mode = 1
 rotating = false
 current = true

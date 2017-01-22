@@ -306,11 +306,10 @@ trigger = true
 
 [node name="Floor" type="Area2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 1440.89, 5556.39 )
 input/pickable = true
 shapes/0/shape = SubResource( 34 )
-shapes/0/transform = Matrix32( 573.547, 0, 0, 3.12775, 1191.82, 65.7154 )
+shapes/0/transform = Matrix32( 800, 0, 0, 5, 324.539, 7.13357 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -320,8 +319,8 @@ script/script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 
-transform/pos = Vector2( 1191.82, 65.7154 )
-transform/scale = Vector2( 573.547, 3.12775 )
+transform/pos = Vector2( 324.539, 7.13357 )
+transform/scale = Vector2( 800, 5 )
 shape = SubResource( 34 )
 trigger = false
 _update_shape_index = 0
