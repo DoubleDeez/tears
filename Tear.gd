@@ -6,7 +6,7 @@ export(float) var ScaleMultiplier = 1.25
 export(Vector2) var MinScale = Vector2(0.25, 0.25)
 export(bool) var IsMainTear = false
 
-const wave_strength = 500.0
+const wave_strength = 2000.0
 
 var TearTrailScene = preload("res://TearTrail.tscn")
 var AreaCollider
