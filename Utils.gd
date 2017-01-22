@@ -1,5 +1,4 @@
-static func load_tscn(path):
-	# path: "res://WaveEmitter.tscn"
-	var tscn = load(path)
-	var instance = tscn.instance()
-	add_child(instance)
+static func get_viewport_size(node):
+	var root = node.get_tree().get_root().get_node("GameRoot")
+	var screen_size = root.get_viewport_rect().size * 7
+	return screen_size
