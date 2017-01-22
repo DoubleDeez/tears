@@ -3,8 +3,6 @@ extends Node2D
 const Constants = preload("Constants.gd")
 const Utils = preload("Utils.gd")
 
-const numPlayers = 1
-
 export(NodePath) var BodyPath = "Body"
 
 var screen_size = Vector2(0,0)
@@ -34,16 +32,27 @@ func load_emitter_players():
 	var waveEm = load(Constants.SCENE_WAVEEMITTER)
 	var RT_texture = load(Constants.TEXTURE_RIGHTEMITTER)
 	var LT_texture = load(Constants.TEXTURE_LEFTEMITTER)
-	for i in range(numPlayers):
+	var joysticks = Input.get_connected_joysticks()
+	for i in range(joysticks.size()):
+		var joystickID = joysticks[i]
+		var playerID = i+1
+
+		if not (playerID in [1,4]):
+			continue
+
 		var waveEmNode_Right = waveEm.instance()
 		add_child(waveEmNode_Right)
 		waveEmNode_Right.set_texture(RT_texture)
 		waveEmNode_Right.set("side", "R")
+		waveEmNode_Right.set("playerID", playerID)
+		waveEmNode_Right.set("joystickID", joystickID)
 
 		var waveEmNode_Left = waveEm.instance()
 		add_child(waveEmNode_Left)
 		waveEmNode_Left.set_texture(LT_texture)
 		waveEmNode_Left.set("side", "L")
+		waveEmNode_Left.set("playerID", playerID)
+		waveEmNode_Left.set("joystickID", joystickID)
 
 		var emitters = []
 		emitters.append(waveEmNode_Right)
