@@ -69,3 +69,4 @@ func create_wave():
 	if side == "R":
 		instance.set_rot(3.14)
 	root.add_child(instance)
+	root.wavesTriggered += 1

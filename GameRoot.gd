@@ -12,6 +12,10 @@ var player_emitters = []
 var body
 var obstacleCounter = 0
 var bodyStartPos
+var wavesTriggered = 0
+const tearVolumeScale_mL = 10.0
+const tearVolumeVel_cmps = 0.05
+var timeOnBody = 0.0
 
 func _ready():
 	screen_size = Utils.get_viewport_size(self)
@@ -21,6 +25,17 @@ func _ready():
 	load_emitter_players()
 	load_obstacle_placers()
 	handle_screen_resize()
+
+	set_process(true)
+
+func _process(delta):
+	var gridContainer = self.get_node("Camera2D").get_node("GridContainer")
+	gridContainer.get_node("ObstaclesPlaced").set_text("Obstacles Placed: %d" % obstacleCounter)
+	gridContainer.get_node("WavesTriggered").set_text("Waves Triggered: %d" % wavesTriggered)
+	var tearVolume = get_node("Tear").get_scale().x * tearVolumeScale_mL
+	gridContainer.get_node("TearVolume").set_text("Tear Volume: %.2f mL" % tearVolume)
+	var tearSpeed = get_node("Body").Speed.y * tearVolumeVel_cmps * -1
+	gridContainer.get_node("TearVelocity").set_text("Tear Velocity: %.2f cm/s" % tearSpeed)
 
 func handle_screen_resize():
 	screen_size = Utils.get_viewport_size(self)

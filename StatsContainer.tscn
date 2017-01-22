@@ -1,0 +1,76 @@
+[gd_scene format=1]
+
+[node name="GridContainer" type="GridContainer"]
+
+rect/scale = Vector2( 5, 5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 392.0
+margin/bottom = 197.0
+columns = 1
+
+[node name="TearVolume" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 106.0
+margin/bottom = 14.0
+text = "TearVolume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TearVelocity" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 106.0
+margin/bottom = 32.0
+text = "TearVelocity"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="WavesTriggered" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 36.0
+margin/right = 106.0
+margin/bottom = 50.0
+text = "WavesTriggered"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ObstaclesPlaced" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 54.0
+margin/right = 106.0
+margin/bottom = 68.0
+text = "ObstaclesPlaced"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
