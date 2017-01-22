@@ -8,18 +8,26 @@ export(bool) var IsMainTear = false
 
 const wave_strength = 500.0
 
+var TearTrailScene = preload("res://TearTrail.tscn")
 var AreaCollider
 var BonusTearSpeed = Vector2(0, 25)
 
 func _ready():
 	AreaCollider = get_node(Collider)
 	set_scale(TearScale)
+	set_process(true)
 	if IsMainTear:
 		get_node("Area2D").connect("area_enter", self, "OnHitTear")
 	else:
 		BonusTearSpeed *= rand_range(0.5, 2.0)
-		#BonusTearSpeed.x = rand_range(-20.0, 20.0)
+		BonusTearSpeed.x = rand_range(-20.0, 20.0)
 		set_fixed_process(true)
+		
+func _process(delta):
+	var TrailDrop = TearTrailScene.instance()
+	get_parent().get_node("Body").add_child(TrailDrop)
+	TrailDrop.set_global_pos(get_global_pos())
+	TrailDrop.set_scale(get_scale() / 2.0)
 
 func _fixed_process(delta):
 	set_pos(get_pos() + BonusTearSpeed)
