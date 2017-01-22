@@ -5,7 +5,7 @@ const Utils = preload("Utils.gd")
 
 var screen_size
 var camera_rect
-var BodySpeed
+var body
 
 const fade_speed = 0.3
 
@@ -16,8 +16,7 @@ func _ready():
 	screen_size = Utils.get_viewport_size(self)
 	camera_rect = Utils.get_camera_rect_dict(self)
 
-	var body = get_tree().get_root().get_node("GameRoot").get_node("Body")
-	BodySpeed = body.get("BodySpeed")
+	body = get_tree().get_root().get_node("GameRoot").get_node("Body")
 
 	set_process(true)
 
@@ -47,7 +46,7 @@ func _process(delta):
 		return
 
 	# Move with the body
-	self.set_global_pos(self.get_global_pos() + BodySpeed * delta)
+	self.set_global_pos(self.get_global_pos() + body.get("BodySpeed") * delta)
 
 	# Move across the screen
 	self.set_global_pos(self.get_global_pos() + Vector2(travel_speed * direction * delta, 0))
