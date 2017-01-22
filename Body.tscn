@@ -185,6 +185,7 @@ extents = Vector2( 10, 10 )
 script/script = ExtResource( 1 )
 BodySpeed = Vector2( 0, -200 )
 TearOffBodyAcceleration = 5
+GreaseSpeedMultiplier = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 

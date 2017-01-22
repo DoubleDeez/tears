@@ -17,7 +17,10 @@ func _ready():
 	AreaCollider = get_node(Collider)
 	set_scale(TearScale)
 	
-func HitObstacle():
+func OnHitObstacle():
 	set_scale(get_scale() / ScaleMultiplier)
 	if (get_scale() < MinScale):
 		get_tree().quit()
+
+func OnHitGrease():
+	get_parent().get_node("Body").OnHitGrease()
