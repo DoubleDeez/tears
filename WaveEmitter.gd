@@ -5,7 +5,7 @@ const Utils = preload("Utils.gd")
 
 var wave_scene = load(Constants.SCENE_WAVE)
 const movement_speed = 30
-const wave_movement_speed = 50
+const wave_movement_speed = 20
 
 # Set this when creating new instance in GameRoot; MUST be one of "L" or "R"
 var side
