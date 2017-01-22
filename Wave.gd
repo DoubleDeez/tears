@@ -7,7 +7,7 @@ var screen_size
 var camera_rect
 var body
 
-const fade_speed = 0.3
+const fade_speed = 0.25
 
 var travel_speed
 var direction # +1 for left, -1 for right

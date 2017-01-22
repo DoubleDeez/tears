@@ -7,6 +7,7 @@ var Pimple = preload("res://obstacles/Pimple.tscn")
 
 export(int) var Speed = 100
 export(float) var Cooldown = 2.0
+export(float) var MaxScale = 0.8
 
 var ObstacleArray = []
 var area
@@ -20,6 +21,7 @@ var texture_raised
 
 func _ready():
 	area = get_node("Area2D")
+	set_scale(Vector2(MaxScale, MaxScale))
 	ObstacleArray.append(BlackHead)
 	ObstacleArray.append(Mole)
 	ObstacleArray.append(Grease)
@@ -57,7 +59,7 @@ func _process(delta):
 	var color = sprite.get_modulate()
 	var pct = (Cooldown - cooldownTimer)/Cooldown
 	if pct <= 1.0:
-		sprite.set_scale(Vector2(pct*0.4,pct*0.4))
+		sprite.set_scale(Vector2(pct*MaxScale,pct*MaxScale))
 	if pct < 1.0:
 		color.a = 0.75
 	else:

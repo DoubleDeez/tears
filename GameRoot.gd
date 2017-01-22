@@ -111,4 +111,4 @@ func CheckSpawnTear():
 	var tear = TearScene.instance()
 	add_child(tear)
 	tear.set_name("BonusTear")
-	Utils.place_on_screen(tear, 0.5, -0.2)#rand_range(0.2, 0.8), -0.2)
+	Utils.place_on_screen(tear, rand_range(0.2, 0.8), -0.2)

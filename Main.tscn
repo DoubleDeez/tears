@@ -12,8 +12,8 @@ TearFrequency = 1
 
 [node name="Body" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -4193.23, 3224.65 )
-transform/scale = Vector2( 4, 4 )
+transform/pos = Vector2( -12676.5, 6436.72 )
+transform/scale = Vector2( 10, 10 )
 BodySpeed = Vector2( 0, -1000 )
 TearOffBodyAcceleration = 400
 
@@ -29,7 +29,7 @@ transform/pos = Vector2( 1836.75, 1134.83 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 7, 7 )
+zoom = Vector2( 20, 20 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000

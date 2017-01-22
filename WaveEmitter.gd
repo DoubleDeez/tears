@@ -4,8 +4,8 @@ const Constants = preload("Constants.gd")
 const Utils = preload("Utils.gd")
 
 var wave_scene = load(Constants.SCENE_WAVE)
-const movement_speed = 3000
-const wave_movement_speed = 2000
+const movement_speed = 3000*2
+const wave_movement_speed = 2000*4
 
 # Set this when creating new instance in GameRoot; MUST be one of "L" or "R"
 var side
