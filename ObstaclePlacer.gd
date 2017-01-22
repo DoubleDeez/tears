@@ -6,7 +6,7 @@ var Grease = preload("res://obstacles/Grease.tscn")
 var Pimple = preload("res://obstacles/Pimple.tscn")
 
 export(int) var Speed = 100
-export(float) var Cooldown = 2
+export(float) var Cooldown = 2.0
 
 var ObstacleArray = []
 var area
@@ -51,3 +51,15 @@ func _process(delta):
 	if abs(Input.get_joy_axis(joystickID, 0)) > 0.1:
 		set_pos(get_pos() + Vector2(Speed*Input.get_joy_axis(joystickID, 0), 0))
 	cooldownTimer -= delta;
+
+	# Fade the button in/out depending on Cooldown
+	var sprite = self.get_node("Sprite")
+	var color = sprite.get_modulate()
+	var pct = (Cooldown - cooldownTimer)/Cooldown
+	if pct <= 1.0:
+		sprite.set_scale(Vector2(pct*0.4,pct*0.4))
+	if pct < 1.0:
+		color.a = 0.75
+	else:
+		color.a = 1.0
+	sprite.set_modulate(color)
